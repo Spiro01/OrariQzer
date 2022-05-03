@@ -1,53 +1,44 @@
-﻿
-using System.Collections.ObjectModel;
-
-namespace OrariQzer
+﻿namespace OrariQzer
 {
 
 
     public partial class MainPage : ContentPage
     {
-
-        ObservableCollection<Orari> orari = new ObservableCollection<Orari>();
-        internal ObservableCollection<Orari> Oraris { get { return orari; } }
+        public List<LOrari> oraribyday;
         GSheet g = new GSheet();
 
         public MainPage()
         {
+
             InitializeComponent();
 
 #if __ANDROID__
             Updater();
+
+#elif WINDOWS10_0_19041_0_OR_GREATER
+            Refresh();
 #endif
 
 
             refr.Refreshing += Refr_Refreshing;
         }
 
-        private void Refr_Refreshing(object sender, EventArgs e)
+        private async void Refr_Refreshing(object sender, EventArgs e)
         {
 
-            Refresh();
+            await Refresh();
 
         }
 
         public async Task Refresh()
         {
-
-
             refr.IsRefreshing = true;
-            Oraris.Clear();
 
             await g.GetFromGs();
-
-            orari = new ObservableCollection<Orari>(g.ParsedList);
-
-            cv.ItemsSource = orari;
+            oraribyday = LOrari.groupDay(g.ParsedList);
+            cv.ItemsSource = oraribyday;
 
             refr.IsRefreshing = false;
-
-
-
         }
 
         public async void Updater()
@@ -69,13 +60,8 @@ namespace OrariQzer
                     }
                 }
             }
-
-
-
         }
-
     }
-
 
 }
 

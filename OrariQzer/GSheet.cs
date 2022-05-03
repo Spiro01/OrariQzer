@@ -17,24 +17,16 @@
             }
             catch { }
 
-
             ParsedList.Clear();
-
-
             string[] rows = par.Split('\n');
-
             ParsedList = rows.Skip(1).Select(x => Orari.Parse(x)).Where(x => x.parsed_date.DayOfYear >= DateTime.Now.DayOfYear).ToList();
             this.par = par;
 
         }
 
-
-
-
         public bool UpdateChecker(out string url)
         {
-            
-                double app_vers = 1.0;
+                double app_vers = 2.0;
                 url = "";
                 string updaterow = par.Split('\n')[0];
                 url = updaterow.Split(',')[0];
@@ -45,11 +37,8 @@
                     if (app_vers < current_vers) { return true; }
                     else { return false; }
                 }
-
                 else return false;
             
         }
-
-
     }
 }

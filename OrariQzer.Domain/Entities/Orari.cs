@@ -12,12 +12,25 @@ namespace OrariQzer.Domain.Entities
         public string Materia { get; set; }
         private string _data;
         public string DateStr { get => giornoSettimana(); set => _data = value; }
-        public DateTime Day { get => DateTime.ParseExact(_data, "dd-MMM-yy", CultureInfo.CreateSpecificCulture("it-IT")); }
+
         public string Professore { get; set; }
         public string Aula { get; set; }
         public string Inizio { get; set; }
         public string Fine { get; set; }
         public string Orario { get => Inizio + " - " + Fine; }
+
+        public DateTime Day
+        {
+            get
+            {
+                if (DateTime.TryParseExact(_data, "dd-MMM-yy", CultureInfo.CreateSpecificCulture("it-IT"),
+                        DateTimeStyles.None, out DateTime date))
+                {
+                    return date;
+                }
+                return DateTime.MinValue;
+            }
+        }
 
 
 
@@ -36,7 +49,7 @@ namespace OrariQzer.Domain.Entities
                 else
                 { result = Day.ToString("dddd"); }
 
-               return result[0].ToString().ToUpper() + result.Substring(1);
+                return result[0].ToString().ToUpper() + result.Substring(1);
             }
             catch { result = ""; }
             return result;

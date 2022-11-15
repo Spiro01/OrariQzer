@@ -13,7 +13,7 @@ namespace OrariQzer.Domain.Repository
         private readonly string url;
         public OrariRepository()
         {
-            url = "https://docs.google.com/spreadsheets/d/1wbo3evHXAm17KoWs9758ujqA6Y4reK6lbhn6CimEZtg/export?format=csv";
+            url = "https://docs.google.com/spreadsheets/d/1Yn1Hhv-pQivIv7OFeqIKgStzH-Px3vDopVyLrNWb3x4/export?format=csv";
         }
         public async Task<IEnumerable<Orari>> getOrari()
         {

@@ -1,0 +1,47 @@
+﻿@page "/"
+@using OrariQzer.Domain.Entities
+@using OrariQzer.Domain.Extensions
+@using OrariQzer.ApplicationCore.Interfaces.Repository
+
+@inject IOrariRepository orariRepository
+<div class="container">
+    @if (Orari is not null)
+    {
+        @foreach (var giorno in GiorniLezione)
+        {
+
+            <div class="all-card">
+                <div class="card-date">
+                    <label>📅 @giorno.ToString("D").FirstCharToUpper()</label>
+                </div>
+                <div class="card-body">
+                    @foreach (var orari in Orari.Where(x => x.Day == giorno))
+                    {
+                        <div class="card-col">
+                            <label>📕@orari.Materia</label>
+                            <label>🕑@orari.Orario | 📌@orari.Aula</label>
+                            <label>👩‍🏭@orari.Professore</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        
+    }
+</div>
+@code {
+    [Parameter]
+    public List<Orari> Orari { get; set; }
+
+    [Parameter]
+    public List<DateTime> GiorniLezione { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Orari = (await orariRepository.getOrari()).ToList();
+        GiorniLezione = Orari.Select(x => x.Day).Distinct().ToList();
+    }
+}

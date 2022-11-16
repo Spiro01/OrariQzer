@@ -9,6 +9,7 @@
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/loading.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
+    <link href="css/error.css" rel="stylesheet"/>
     <link rel="icon" href="/calendar.png" type="image/icon type">
 
     <!-- If you add any scoped CSS files, uncomment the following to load them
@@ -24,9 +25,14 @@
     </div>
 
     <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
+        <div class="frame">
+            <div class="modal">
+                <img src="https://100dayscss.com/codepen/alert.png" width="44" height="38" />
+                <span class="title">Errore</span>
+                <p>Qualcosa è andato storto, prova a ricaricare la pagina</p>
+                <div class="button">Chiudi</div>
+            </div>
+        </div>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>

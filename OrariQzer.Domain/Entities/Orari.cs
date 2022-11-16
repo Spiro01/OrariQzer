@@ -23,7 +23,7 @@ namespace OrariQzer.Domain.Entities
         {
             get
             {
-                if (DateTime.TryParseExact(_data, "dd-MMM-yy", CultureInfo.CreateSpecificCulture("it-IT"),
+                if (DateTime.TryParseExact(_data, "dd-MMM-yy", CultureInfo.InvariantCulture,
                         DateTimeStyles.None, out DateTime date))
                 {
                     return date;

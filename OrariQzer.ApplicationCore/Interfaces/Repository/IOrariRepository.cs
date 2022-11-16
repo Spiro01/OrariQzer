@@ -10,6 +10,5 @@ namespace OrariQzer.ApplicationCore.Interfaces.Repository
     public interface IOrariRepository
     {
         public Task<IEnumerable<Orari>> getOrari();
-        public Task<Update> UpdateChecker();
     }
 }

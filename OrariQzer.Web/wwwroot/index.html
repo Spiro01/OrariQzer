@@ -9,33 +9,29 @@
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/loading.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
-    <link href="css/error.css" rel="stylesheet"/>
+    <link href="css/error.css" rel="stylesheet" />
     <link rel="icon" href="/calendar.png" type="image/icon type">
 
-    <!-- If you add any scoped CSS files, uncomment the following to load them
-    <link href="OrariQzer.Web.styles.css" rel="stylesheet" /> -->
 </head>
 
 <body>
     <div id="app">
-
         <div class="center-loading">
             <span class="loader"></span>
         </div>
     </div>
 
     <div id="blazor-error-ui">
-        <div class="frame">
-            <div class="modal">
-                <img src="https://100dayscss.com/codepen/alert.png" width="44" height="38" />
-                <span class="title">Errore</span>
-                <p>Qualcosa è andato storto, prova a ricaricare la pagina</p>
-                <div class="button">Chiudi</div>
+        <div class="error-popup">
+            <div class="error-content">
+                <img src="/error.png" />
+                <label>Errore</label>
             </div>
         </div>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js');</script>
+<script>navigator.serviceWorker.register('service-worker.js');</script>
+<script src="https://kit.fontawesome.com/f2e4ebcc06.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

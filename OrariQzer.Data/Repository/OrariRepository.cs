@@ -29,9 +29,6 @@ namespace OrariQzer.Domain.Repository
 
         }
 
-        public Task<Update> UpdateChecker()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

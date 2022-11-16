@@ -1,8 +1,9 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: black;
+    margin: 0;
 }
 
 h1:focus {
@@ -37,11 +38,14 @@ a, .btn-link {
 
 #blazor-error-ui {
     display: none;
-    
+    z-index: 1000;
+    height: 100vh;
 }
 
 
-
+.container {
+    margin: 2rem;
+}
 
 
 
@@ -54,16 +58,14 @@ label {
     background-color: initial;
 }
 
-* {
-
-}
 
 .all-card {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
-    background-color: #333333;
+    background-color: inherit;
     color: white;
+    font-weight: 100;
 }
 
 .card-date {
@@ -90,4 +92,17 @@ label {
 }
 
 .card-row {
+    display: flex;
 }
+
+    .card-row > label {
+        margin: auto 0;
+    }
+
+    .card-row > img {
+        height: 2em;
+    }
+
+    .card-row > .rm-lmargin {
+        margin-left: -0.4em;
+    }

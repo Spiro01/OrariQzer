@@ -1,9 +1,8 @@
 ﻿@page "/"
-@using OrariQzer.Domain.Entities
-@using OrariQzer.Domain.Extensions
-@using OrariQzer.ApplicationCore.Interfaces.Repository
 
 @inject IOrariRepository orariRepository
+@inject ILogger<Index> logger
+
 <div class="container">
     @if (Orari is not null)
     {
@@ -29,10 +28,11 @@
     }
     else
     {
-        
+        <Loading/>
     }
 </div>
 @code {
+
     [Parameter]
     public List<Orari> Orari { get; set; }
 
@@ -41,7 +41,15 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Orari = (await orariRepository.getOrari()).ToList();
-        GiorniLezione = Orari.Select(x => x.Day).Distinct().ToList();
+        try
+        {
+            Orari = (await orariRepository.getOrari()).ToList();
+            GiorniLezione = Orari.Select(x => x.Day).Distinct().ToList();
+        }
+        catch (Exception ex)
+        {
+           logger.LogCritical(ex.Message);
+        }
+       
     }
 }

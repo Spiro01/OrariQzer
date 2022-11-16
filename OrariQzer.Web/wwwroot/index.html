@@ -7,14 +7,21 @@
     <title>OrariQzer.Web</title>
     <base href="/" />
     <link href="css/app.css" rel="stylesheet" />
+    <link href="css/loading.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
+    <link rel="icon" href="/calendar.png" type="image/icon type">
 
     <!-- If you add any scoped CSS files, uncomment the following to load them
     <link href="OrariQzer.Web.styles.css" rel="stylesheet" /> -->
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+
+        <div class="center-loading">
+            <span class="loader"></span>
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.

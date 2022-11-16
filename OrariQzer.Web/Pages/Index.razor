@@ -41,15 +41,11 @@
 
     protected override async Task OnInitializedAsync()
     {
-        try
-        {
+       
             Orari = (await orariRepository.getOrari()).ToList();
             GiorniLezione = Orari.Select(x => x.Day).Distinct().ToList();
-        }
-        catch (Exception ex)
-        {
-           logger.LogCritical(ex.Message);
-        }
+
+        
        
     }
 }

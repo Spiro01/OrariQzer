@@ -1,9 +1,9 @@
 ﻿@page "/"
 
 @inject IOrariRepository orariRepository
-@inject ILogger<Index> logger
+@inject NavigationManager Navigation
 
-<div class="container">
+<div class="app-container">
     @if (Orari is not null)
     {
         @foreach (var giorno in GiorniLezione)
@@ -11,15 +11,17 @@
 
             <div class="all-card">
                 <div class="card-date">
-                    <label>📅 @giorno.ToString("D").FirstCharToUpper()</label>
+                    <span class="card-row"> <img src="/Icons/calendar.svg" /><label> @giorno.ToString("dddd, dd MMMM").FirstCharToUpper()</label></span>
                 </div>
                 <div class="card-body">
                     @foreach (var orari in Orari.Where(x => x.Day == giorno))
                     {
                         <div class="card-col">
-                            <label>📕@orari.Materia</label>
-                            <label>🕑@orari.Orario | 📌@orari.Aula</label>
-                            <label>👩‍🏭@orari.Professore</label>
+                            <span class="card-row"><img src="Icons/book.svg" /> <label>@orari.Materia</label></span>
+                            <span class="card-row">
+                                <img src="Icons/clock.svg" /><label>@orari.Orario</label><img src="Icons/pin.svg" /><label class="rm-lmargin">@orari.Aula</label>
+                            </span>
+                            <span class="card-row"><img src="Icons/person.svg" /> <label>@orari.Professore</label></span>
                         </div>
                     }
                 </div>
@@ -28,24 +30,25 @@
     }
     else
     {
-        <Loading/>
+        <Loading />
     }
 </div>
+
+<div class="buttonbar">
+    <button type="button" class="btn btn-primary" onclick="@(()=>{Navigation.NavigateTo("/voti");})">Voti</button>
+</div>
+
 @code {
 
     [Parameter]
-    public List<Orari> Orari { get; set; }
+    public List<Orari>? Orari { get; set; }
 
     [Parameter]
     public List<DateTime> GiorniLezione { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-       
-            Orari = (await orariRepository.getOrari()).ToList();
-            GiorniLezione = Orari.Select(x => x.Day).Distinct().ToList();
-
-        
-       
+        Orari = (await orariRepository.getOrari()).ToList();
+        GiorniLezione = Orari.Select(x => x.Day).Distinct().ToList();
     }
 }

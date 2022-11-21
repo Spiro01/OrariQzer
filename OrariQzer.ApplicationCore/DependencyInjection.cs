@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OrariQzer.ApplicationCore.Services;
 
 namespace OrariQzer.Domain
 {
@@ -12,7 +13,7 @@ namespace OrariQzer.Domain
     {
         public static IServiceCollection AddApplicationCore(this IServiceCollection services)
         {
-
+            services.AddSingleton<IGoogleService,GoogleService>();
             return services;
         }
     }

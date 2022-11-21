@@ -1,7 +1,25 @@
 ﻿@page "/voti"
-
+@inject NavigationManager Navigation
+@inject IGoogleService GoogleService
+@inject IVotiRepository VotiRepository
 <h3>Voti</h3>
 
-@code {
+@if (!GoogleService.isGoogleAuthenticated())
+{
+    <button class="btn btn-danger" @onclick="GetGoogleToken">Google login</button>
+}
+else
+{
+    @GoogleService.GetGoogleToken().Token
+}
 
+
+@code {
+    public bool UserLoggedIn { get; set; }
+
+
+    private void GetGoogleToken()
+    {
+        GoogleService.promptGoogleAuth();
+    }
 }

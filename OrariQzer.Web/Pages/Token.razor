@@ -1,0 +1,12 @@
+﻿@page "/googleauth/token"
+@inject NavigationManager NavigationManager
+@inject IGoogleService googleService
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        googleService.setGoogleToken(NavigationManager.Uri);
+        NavigationManager.NavigateTo("/voti");
+    }
+
+}

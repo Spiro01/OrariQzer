@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using OrariQzer.Data.Repository;
 
 namespace OrariQzer.Domain
 {
@@ -14,6 +14,7 @@ namespace OrariQzer.Domain
         public static IServiceCollection AddData(this IServiceCollection services)
         {
             services.AddScoped<IOrariRepository, OrariRepository>();
+            services.AddScoped<IVotiRepository, VotiRepository>();
             return services;
         }
     }

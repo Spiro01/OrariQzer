@@ -44,7 +44,9 @@ a, .btn-link {
 
 
 .container {
-    margin: 2rem;
+    margin: auto;
+    max-width: 60em;
+    padding: 2rem;
 }
 
 

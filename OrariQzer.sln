@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrariQzer.ApplicationCore", "OrariQzer.ApplicationCore\OrariQzer.ApplicationCore.csproj", "{759EA5D5-C4FB-44EA-B6EC-D72A3AAC40DC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrariQzer.Data", "OrariQzer.Data\OrariQzer.Data.csproj", "{81D4D804-C299-4112-B72C-E2998D789A0C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrariQzer.Domain", "OrariQzer.Domain\OrariQzer.Domain.csproj", "{6C336B63-B4E5-49D0-A3B2-121B62E9103E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrariQzer.Web", "OrariQzer.Web\OrariQzer.Web.csproj", "{4D1DD3EB-16F2-45F5-A5F4-167FE4FF0701}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OraiQzer.Api", "OraiQzer.Api\OraiQzer.Api.csproj", "{0956B86C-D27C-4C35-81E8-D1A5A698B8FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{759EA5D5-C4FB-44EA-B6EC-D72A3AAC40DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{759EA5D5-C4FB-44EA-B6EC-D72A3AAC40DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{759EA5D5-C4FB-44EA-B6EC-D72A3AAC40DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{759EA5D5-C4FB-44EA-B6EC-D72A3AAC40DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81D4D804-C299-4112-B72C-E2998D789A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81D4D804-C299-4112-B72C-E2998D789A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81D4D804-C299-4112-B72C-E2998D789A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81D4D804-C299-4112-B72C-E2998D789A0C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C336B63-B4E5-49D0-A3B2-121B62E9103E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C336B63-B4E5-49D0-A3B2-121B62E9103E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C336B63-B4E5-49D0-A3B2-121B62E9103E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +23,10 @@ Global
 		{4D1DD3EB-16F2-45F5-A5F4-167FE4FF0701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D1DD3EB-16F2-45F5-A5F4-167FE4FF0701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D1DD3EB-16F2-45F5-A5F4-167FE4FF0701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0956B86C-D27C-4C35-81E8-D1A5A698B8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0956B86C-D27C-4C35-81E8-D1A5A698B8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0956B86C-D27C-4C35-81E8-D1A5A698B8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0956B86C-D27C-4C35-81E8-D1A5A698B8FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

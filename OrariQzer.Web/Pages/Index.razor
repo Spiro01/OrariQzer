@@ -1,27 +1,27 @@
 ﻿@page "/"
+@using System.Globalization
 
-@inject IOrariRepository orariRepository
-@inject ILogger<Index> logger
+@inject IClientScheduleRepository ClientScheduleRepository
 
 <div class="container">
-    @if (Orari is not null)
+    @if (Schedules is not null)
     {
-        @foreach (var giorno in GiorniLezione)
+        @foreach (var day in LessonDays!)
         {
 
             <div class="all-card">
                 <div class="card-date">
-                    <span class="card-row"> <img src="/Icons/calendar.svg" /><label> @giorno.ToString("dddd, dd MMMM").FirstCharToUpper()</label></span>
+                    <span class="card-row"><img src="/Icons/calendar.svg" /><label> @day.ToString("dddd, dd MMMM").FirstCharToUpper()</label></span>
                 </div>
                 <div class="card-body">
-                    @foreach (var orari in Orari.Where(x => x.Day == giorno))
+                    @foreach (var orari in Schedules.Where(x => x.WeekDay == day))
                     {
                         <div class="card-col">
-                            <span class="card-row"><img src="Icons/book.svg" /> <label>@orari.Materia</label></span>
+                            <span class="card-row"><img src="Icons/book.svg" /> <label>@orari.Subject</label></span>
                             <span class="card-row">
-                                <img src="Icons/clock.svg" /><label>@orari.Orario</label><img src="Icons/pin.svg" /><label class="rm-lmargin">@orari.Aula</label>
+                                <img src="Icons/clock.svg" /><label>@orari.StartTime.ToString("HH:mm") - @orari.EndTime.ToString("HH:mm")</label><img src="Icons/pin.svg" /><label class="rm-lmargin">@orari.ClassRoom</label>
                             </span>
-                            <span class="card-row"><img src="Icons/person.svg" /> <label>@orari.Professore</label></span>
+                            <span class="card-row"><img src="Icons/person.svg" /> <label>@orari.Teacher</label></span>
                         </div>
                     }
                 </div>
@@ -35,17 +35,18 @@
 </div>
 @code {
 
-    [Parameter]
-    public List<Orari> Orari { get; set; }
-
-    [Parameter]
-    public List<DateTime> GiorniLezione { get; set; }
-
+    public List<Schedule>? Schedules { get; set; }
+    public List<DateOnly>? LessonDays { get; set; }
     protected override async Task OnInitializedAsync()
     {
 
-        Orari = (await orariRepository.getOrari()).ToList();
-        GiorniLezione = Orari.Select(x => x.Day).Distinct().ToList();
+        Schedules = (await ClientScheduleRepository.getOrari())
+            .Where(x=>x.WeekDay.DayOfYear >= DateTime.Now.DayOfYear)
+            .ToList();
+
+        LessonDays = Schedules.Select(x => x.WeekDay)
+            .Distinct()
+            .ToList();
 
 
 

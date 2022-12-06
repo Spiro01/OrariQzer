@@ -11,7 +11,7 @@
 
             <div class="all-card">
                 <div class="card-date">
-                    <span class="card-row"><img src="/Icons/calendar.svg" /><label> @day.ToString("dddd, dd MMMM").FirstCharToUpper()</label></span>
+                    <span class="card-row"><img src="/Icons/calendar.svg" /><label> @day.ToReadableDate()</label></span>
                 </div>
                 <div class="card-body">
                     @foreach (var orari in Schedules.Where(x => x.WeekDay == day))

@@ -37,27 +37,7 @@ namespace OrariQzer.Domain.Entities
             
         }
 
-        /*private string giornoSettimana()
-        {
-            string result;
-            try
-            {
-               
-
-
-                if (Day.DayOfYear == DateTime.Now.DayOfYear)
-                { result = "Oggi"; }
-                else if (Day.DayOfYear == DateTime.Now.DayOfYear + 1)
-                { result = "Domani"; }
-                else
-                { result = Day.ToString("dddd"); }
-
-                return result[0].ToString().ToUpper() + result.Substring(1);
-            }
-            catch { result = ""; }
-            return result;
-
-        }*/
+        
 
     }
 }

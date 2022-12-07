@@ -30,7 +30,7 @@ app.UseCors(options =>
 
 app.UseHttpsRedirection();
 app.MapControllers();
-
+app.UseOutputCache();
 
 app.MapGroup("/orari")
     .MapScheduleGroup()

@@ -39,16 +39,13 @@
     public List<DateOnly>? LessonDays { get; set; }
     protected override async Task OnInitializedAsync()
     {
-
         Schedules = (await ClientScheduleRepository.getOrari())
-            .Where(x=>x.WeekDay.DayOfYear >= DateTime.Now.DayOfYear)
-            .ToList();
+                .Where(x => x.WeekDay.DayOfYear >= DateTime.Now.DayOfYear)
+                .ToList();
 
-        LessonDays = Schedules.Select(x => x.WeekDay)
-            .Distinct()
-            .ToList();
-
-
+            LessonDays = Schedules.Select(x => x.WeekDay)
+                .Distinct()
+                .ToList();
 
     }
 }

@@ -27,10 +27,12 @@ namespace OrariQzer.Domain.Repository
 
             HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();
-            var rows = await response.Content.ReadFromJsonAsync<IEnumerable<string[]>>();
+            var rows = await response.Content.ReadFromJsonAsync<IEnumerable<string[]?>>();
 
-            return rows!.Select(x => x.ToSchedule())
-                       .Where(x => !fromToday || x.WeekDay.DayOfYear >= DateTime.Now.DayOfYear);
+            return rows!
+                .Select(x => x?.ToSchedule())
+                .Where(x => x is not null)
+                .Where(x => !fromToday || x.WeekDay.DayOfYear >= DateTime.Now.DayOfYear);
 
         }
 

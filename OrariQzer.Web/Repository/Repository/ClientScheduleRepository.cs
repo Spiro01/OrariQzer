@@ -27,9 +27,9 @@ namespace OrariQzer.Domain.Repository
             response.EnsureSuccessStatusCode();
             
 
+           var result = await response.Content.ReadFromJsonAsync<IEnumerable<Schedule>>() ?? new List<Schedule>();
 
-
-            return await response.Content.ReadFromJsonAsync<IEnumerable<Schedule>>() ?? new List<Schedule>();
+           return result;
 
         }
 

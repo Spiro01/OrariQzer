@@ -24,7 +24,7 @@ namespace OrariQzer.Domain.Entities
             Teacher = teacher;
             ClassRoom = classRoom;
             
-            if(DateOnly.TryParse(weekday,CultureInfo.InvariantCulture, out DateOnly parsedWeekDay ))WeekDay = parsedWeekDay;
+            if(DateOnly.TryParse(weekday,CultureInfo.CreateSpecificCulture("it-IT"), out DateOnly parsedWeekDay ))WeekDay = parsedWeekDay;
             if(TimeOnly.TryParseExact(startTime,"H.mm", out TimeOnly parsedStartTime ))StartTime = parsedStartTime;
             if(TimeOnly.TryParseExact(endTime, "H.mm", out TimeOnly parsedEndTime ))EndTime = parsedEndTime;
             

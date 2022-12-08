@@ -9,6 +9,6 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddScoped<IClientScheduleRepository, ClientScheduleRepository>();
+builder.Services.AddScoped<IClientScheduleRepository, DriveScheduleRepository>();
 builder.Services.AddScoped<IClientReportRepository, ClientReportRepository>();
 await builder.Build().RunAsync();

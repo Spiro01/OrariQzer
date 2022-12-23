@@ -40,7 +40,7 @@
     protected override async Task OnInitializedAsync()
     {
         Schedules = (await ClientScheduleRepository.getOrari())
-                .Where(x => x.WeekDay.DayOfYear >= DateTime.Now.DayOfYear)
+                .Where(x => x.WeekDay.ToDateTime(TimeOnly.MinValue) >= DateTime.Now)
                 .ToList();
 
             LessonDays = Schedules.Select(x => x.WeekDay)

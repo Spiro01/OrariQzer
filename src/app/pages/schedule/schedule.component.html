@@ -1,0 +1,26 @@
+ <!-- <div class="container">
+    <div class="all-card">
+        <div class="card-date">
+            <span class="card-row"><img src="/Icons/calendar.svg" /><label> @day.ToReadableDate()</label></span>
+        </div>
+        <div class="card-body">
+            @foreach (var orari in Schedules.Where(x => x.WeekDay == day))
+            {
+            <div class="card-col">
+                <span class="card-row"><img src="Icons/book.svg" /> <label>@orari.Subject</label></span>
+                <span class="card-row">
+                    <img src="Icons/clock.svg" /><label>@orari.StartTime.ToString("HH:mm") -
+                        @orari.EndTime.ToString("HH:mm")</label><img src="Icons/pin.svg" /><label
+                        class="rm-lmargin">@orari.ClassRoom</label>
+                </span>
+                <span class="card-row"><img src="Icons/person.svg" /> <label>@orari.Teacher</label></span>
+            </div>
+            }
+        </div>
+    </div>
+
+</div>  -->
+
+<div *ngFor="let day of getUniqueScheduleDays()">
+    <p>{{ day }}</p>
+  </div>

@@ -1,10 +1,10 @@
-<div class="container" *ngFor="let day of getUniqueScheduleDays(false)">
+<div class="container" *ngFor="let day of getUniqueScheduleDays()">
     <div class="all-card">
         <div class="card-date">
             <span class="card-row"><img src="assets/Icons/calendar.svg" /><label>{{day}}</label></span>
         </div>
-        <div class="card-body">
-            <div class="card-col" *ngFor="let schedule of getScheduleByDay(day)">
+        <div class="card-body" *ngFor="let schedule of getScheduleByDay(day); index as i; last as isLast">
+            <div class="card-col">
                 <span class="card-row"><img src="assets/Icons/book.svg" /> <label>{{schedule.subject}}</label></span>
                 <span class="card-row">
                     <img src="assets/Icons/clock.svg" /><label>{{schedule.startTime.format("HH:mm")}} -
@@ -13,6 +13,7 @@
                 </span>
                 <span class="card-row"><img src="assets/Icons/person.svg" /> <label>{{schedule.teacher}}</label></span>
             </div>
+            <span class="card-hr" *ngIf="!isLast"></span>
         </div>
     </div>
 </div>

@@ -7,8 +7,8 @@
             <div class="card-col" *ngFor="let schedule of getScheduleByDay(day)">
                 <span class="card-row"><img src="assets/Icons/book.svg" /> <label>{{schedule.subject}}</label></span>
                 <span class="card-row">
-                    <img src="assets/Icons/clock.svg" /><label>{{schedule.startTime.format("HH:MM")}} -
-                        {{schedule.endTime.format("HH:MM")}}</label><img src="assets/Icons/pin.svg" /><label
+                    <img src="assets/Icons/clock.svg" /><label>{{schedule.startTime.format("HH:mm")}} -
+                        {{schedule.endTime.format("HH:mm")}}</label><img src="assets/Icons/pin.svg" /><label
                         class="rm-lmargin">{{schedule.classRoom}}</label>
                 </span>
                 <span class="card-row"><img src="assets/Icons/person.svg" /> <label>{{schedule.teacher}}</label></span>

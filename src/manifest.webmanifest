@@ -1,0 +1,16 @@
+{
+  "name": "OrariQzer",
+  "short_name": "OrariQzer",
+  "theme_color": "#8e1934",
+  "background_color": "#000000",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/Icons/calendar.svg",
+      "type": "image/svg",
+      "purpose": "maskable any"
+    }
+  ]
+}

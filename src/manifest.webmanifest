@@ -4,13 +4,20 @@
   "theme_color": "#8e1934",
   "background_color": "#000000",
   "display": "standalone",
-  "scope": "./",
+  "scope": "/",
+  "id":"711a5d0e-10be-4d4e-87d6-b27942216903",
   "start_url": "./",
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "assets/Icons/calendar.svg",
-      "type": "image/svg",
-      "purpose": "maskable any"
+      "src": "assets/Icons/calendar.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "assets/Icons/calendar.png",
+      "type": "image/png",
+      "sizes": "192x192"
     }
   ]
 }

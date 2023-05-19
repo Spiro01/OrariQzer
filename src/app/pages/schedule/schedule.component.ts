@@ -4,6 +4,7 @@ import { Moment } from 'moment';
 import { Subject, takeUntil } from 'rxjs';
 import { ISchedule } from 'src/app/models/schedule';
 import { ScheduleService } from 'src/app/services/schedule.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-schedule',
@@ -37,14 +38,30 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       });
 
   }
-  getUniqueScheduleDays(onlyFuture: boolean = true) {
-    const days = this.schedules.filter(x=>x.weekDay.isSameOrAfter(moment(),"day") || !onlyFuture).map(s => s.weekDay.format('LL'));
+  getUniqueScheduleDays() {
+    
+    const days = this.schedules
+      .filter(x => x.weekDay.isSameOrAfter(moment(), "day") || !environment.production)
+      .map(x => this.momentToReadableDate(x.weekDay));
+
     const uniqueDays = [...new Set(days)];
     return uniqueDays;
   }
 
   getScheduleByDay(day: string) {
-    return this.schedules.filter(x=>x.weekDay.format('LL') === day);
+    return this.schedules.filter(x => this.momentToReadableDate(x.weekDay) === day);
+  }
+
+  private momentToReadableDate(date: Moment) {
+    if (date.isSame(moment(), "day"))
+      return "Oggi";
+
+    if (date.isSame(moment().add(1, "day"), "day"))
+      return "Domani";
+
+    let formattedDate = date.format("dddd DD MMMM");
+    formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+    return formattedDate;
   }
 
 }

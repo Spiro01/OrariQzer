@@ -36,7 +36,7 @@ export class ScheduleService {
       subject: row[6] ?? "",
       teacher: row[5] ?? "",
       classRoom: row[7] ?? "",
-      weekDay:  moment(row[3],"DD-mm-yy","it") ?? null,
+      weekDay:  moment(row[3],"DD-MMM-yy","it") ?? null,
       startTime: moment(row[1],"LT") ?? null,
       endTime: moment(row[2],"LT") ?? null,
     };
